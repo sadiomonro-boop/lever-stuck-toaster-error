@@ -10,12 +10,16 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
 
-// Blind-test winner (8 candidates, pairwise vs 2 strong references):
-// "Lever stuck. I am holding your breakfast hostage. Press me."
-// 59 characters, 59 bytes. A stuck lever is a real toaster fault, the
-// hostage joke is fresh (no burnt-toast / 404 / bread-not-found trope),
-// and the voice stays deadpan to the end.
-const LINE = "Lever stuck. I am holding your breakfast hostage. Press me.";
+// Blind-test winner (8 fresh candidates, pairwise blind vs 4 strong
+// references from different fault domains, both orders per pair):
+// "The toast has earned tenure and is not leaving the slot."
+// 56 characters, 56 bytes. One fault (toast will not leave the slot),
+// one deadpan voice held to the end, one sentence, concrete nouns
+// (toast, slot), no imperative, and the surprise comes from tenure —
+// a status the toast cannot lose — a domain the obvious toaster puns
+// never visit. Record 8-0 vs all four references, margins of 2 vs
+// two of them; full matrix in BUILD-REPORT.json.
+const LINE = "The toast has earned tenure and is not leaving the slot.";
 
 const outPath = process.argv[2] ?? "/output/entry.txt";
 
